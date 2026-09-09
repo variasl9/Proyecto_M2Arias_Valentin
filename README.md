@@ -146,4 +146,13 @@ Cubre operaciones CRUD y casos de error (validaciones, 404, FK inválida) en `au
 
 ## Registro de uso de IA
 
-Este proyecto fue desarrollado con asistencia de Claude (Anthropic) durante todo el proceso: diseño de la arquitectura en capas (routes → controllers → services → pg Pool), generación del código de controllers/services/validators/middlewares siguiendo ese patrón, redacción de la especificación OpenAPI (`openapi.yaml`), armado de los tests con Jest + Supertest, y este mismo README. Las decisiones de diseño, la revisión de la consigna y rúbrica, la configuración del entorno local (bases de datos, `.env`) y la verificación final (correr tests, levantar el server, revisar Swagger) fueron hechas y validadas por el autor del proyecto.
+Este proyecto fue desarrollado con asistencia de **Claude (Anthropic)** a lo largo de todo el proceso. Detalle por etapa:
+
+- **Arquitectura y scaffolding**: diseño de la estructura en capas (routes → controllers → services → pg Pool), siguiendo el patrón de una demo previa provista como referencia.
+- **Código de la aplicación**: generación de controllers, services, validators, middlewares (`errorHandler`, `asyncHandler`, `AppError`) y las queries parametrizadas a PostgreSQL.
+- **Documentación OpenAPI**: redacción completa de `src/docs/openapi.yaml` (paths, schemas, respuestas de error) a partir de los endpoints reales del código, y su integración con Swagger UI en `src/server.js`.
+- **Testing**: diseño y escritura de los 16 tests con Jest + Supertest (casos de éxito y de error en authors, posts y comments).
+- **Debugging asistido**: la IA ayudó a diagnosticar y corregir errores reales encontrados al ejecutar el proyecto — por ejemplo, un fallo de conexión a PostgreSQL en los tests (`SASL: ... client password must be a string`, resuelto migrando de `process.loadEnvFile` a `dotenv` dentro de Jest) y un error de CORS al probar el endpoint de producción desde una pestaña de Swagger abierta en `localhost`.
+- **Este README**: redactado con asistencia de IA a partir de la estructura final del proyecto.
+
+**Validación humana**: cada archivo generado fue copiado y guardado manualmente por el autor, revisado, y puesto a prueba de forma real antes de darlo por válido — incluyendo `node --check` de sintaxis, ejecución de `npm test` (16/16 tests en verde), levantar el servidor en local y probar endpoints desde Swagger UI (`POST`/`GET /authors`), y repetir esas mismas pruebas contra la URL pública de Railway ya desplegada. La configuración del entorno (creación de bases de datos en pgAdmin, variables de entorno, cuenta y proyecto en Railway) fue realizada íntegramente por el autor.
