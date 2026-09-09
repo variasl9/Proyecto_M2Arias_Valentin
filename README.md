@@ -136,7 +136,13 @@ Cubre operaciones CRUD y casos de error (validaciones, 404, FK inválida) en `au
    - Podés copiar el valor desde la pestaña *Variables* del servicio de Postgres.
 3. **Internal URL vs Public URL**: si tu API y tu base de datos están en el mismo proyecto de Railway, usá la **Internal URL** (`postgres.railway.internal`) para conectarlos — es más rápida y no sale a internet. La **Public URL** solo hace falta si necesitás conectarte a la base desde afuera de Railway (por ejemplo, para inspeccionarla con pgAdmin desde tu PC).
 4. Railway detecta automáticamente `npm start` como comando de arranque (definido en `package.json`).
-5. Una vez deployado, la URL pública del servicio (algo como `https://tu-app.up.railway.app`) es la que hay que probar y documentar acá.
+5. En **Settings → Networking → Generate Domain**, indicar el puerto en el que escucha la app (Railway lo inyecta vía `PORT`; se puede confirmar el valor exacto mirando el log de arranque, que imprime `MiniBlog API corriendo en http://localhost:PUERTO`).
+
+### URL pública operativa
+
+- **API**: https://proyectom2ariasvalentin-production-f970.up.railway.app
+- **Health check**: https://proyectom2ariasvalentin-production-f970.up.railway.app/health
+- **Swagger UI**: https://proyectom2ariasvalentin-production-f970.up.railway.app/api-docs
 
 ## Registro de uso de IA
 

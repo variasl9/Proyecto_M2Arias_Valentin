@@ -9,10 +9,10 @@ info:
     name: Valentin Arias
 
 servers:
+  - url: https://proyectom2ariasvalentin-production-f970.up.railway.app
+    description: Producción (Railway)
   - url: http://localhost:3000
     description: Entorno local
-  - url: https://TU-APP.up.railway.app
-    description: Producción (Railway)
 
 tags:
   - name: Health
